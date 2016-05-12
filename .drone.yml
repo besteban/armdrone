@@ -21,16 +21,13 @@ build:
     # - go get -d github.com/PuerkitoBio/purell
     # - go get -d github.com/drone/drone
     # - cd /gopath1.5/src/github.com/drone/drone
-    - echo $GOPATH
-    - pwd
-    - mkdir -p $GOPATH/src/github.com/drone
+    - mkdir -p $GOPATH/src/github.com/drone /data/usr/local/bin/
     - cd $GOPATH/src/github.com/drone/
     - git clone --branch v0.4.2 https://github.com/drone/drone
     - cd drone
     - sed -i 's|drone/drone-exec:latest|armdrone/drone-exec|g' engine/worker.go
     - make deps gen
     - make build
-    - ls -la . drone/
     - cp drone/drone /data/usr/local/bin/drone
     - chmod a+x /data/usr/local/bin/drone
     - cp --parents /etc/ssl/certs/ca-certificates.crt /data/
