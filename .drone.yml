@@ -32,7 +32,6 @@ build:
     - chmod a+x /data/usr/local/bin/drone
     - cp --parents /etc/ssl/certs/ca-certificates.crt /data/
 
-
 publish:
   docker:
 #    environment:
