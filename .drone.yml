@@ -28,7 +28,6 @@ build:
     - git clone --branch v0.4.2 https://github.com/drone/drone
     - cd drone
     - sed -i 's|drone/drone-exec:latest|armdrone/drone-exec|g' engine/worker.go
-    # - make deps gen && make build && make build_static
     - make deps gen
     - make build
     - ls -la . drone/
@@ -37,13 +36,14 @@ build:
     - cp --parents /etc/ssl/certs/ca-certificates.crt /data/
 
 
-# publish:
-#   docker:
-# #    environment:
-# #      - DOCKER_LAUNCH_DEBUG=true
-#     username: $$DOCKER_USER
-#     password: $$DOCKER_PASS
-#     email: $$DOCKER_EMAIL
-#     repo: armdrone/drone
-#     tag:
-#       - latest
+publish:
+  docker:
+#    environment:
+#      - DOCKER_LAUNCH_DEBUG=true
+    username: $$DOCKER_USER
+    password: $$DOCKER_PASS
+    email: $$DOCKER_EMAIL
+    repo: armdrone/drone
+    tag:
+#      - latest
+      - 0.4.2
