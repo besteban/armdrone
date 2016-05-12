@@ -2,15 +2,14 @@ FROM scratch
 
 MAINTAINER Andreas Eiermann <andreas@hypriot.com>
 
-COPY drone_static /usr/local/bin/drone
-COPY etc /
+COPY . /
+ENV PATH=/:/usr/local/bin:$PATH
 
-ENV SERVER_ADDR=:80
-ENV PLUGIN_FILTER=plugins/*
-ENV DATABASE_DRIVER=sqlite3
-ENV DATABASE_CONFIG=/var/lib/drone/drone.sqlite
-
-ENV REMOTE_DRIVER=github
+ENV SERVER_ADDR=:80 \
+    PLUGIN_FILTER=plugins/* \
+    DATABASE_DRIVER=sqlite3 \
+    DATABASE_CONFIG=/var/lib/drone/drone.sqlite \
+    REMOTE_DRIVER=github
 
 VOLUME /var/lib/drone
 EXPOSE 80

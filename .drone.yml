@@ -2,6 +2,8 @@ debug: true
 
 build:
   image: hypriot/rpi-golang:1.5
+  environment:
+    - GO15VENDOREXPERIMENT=1
   commands:
     - apt-get update
     - apt-get install -y mercurial g++ libsqlite3-dev ca-certificates
@@ -18,14 +20,19 @@ build:
     # - go get -d github.com/drone/drone
     # - cd /gopath1.5/src/github.com/drone/drone
 
+    - pwd
+    - mkdir -p /drone/src/github.com/drone
+    - cd /drone/src/github.com/drone/
     - git clone --branch v0.4.2 https://github.com/drone/drone
     - cd drone
     - sed -i 's|drone/drone-exec:latest|armdrone/drone-exec|g' engine/worker.go
     # - make deps gen && make build && make build_static
-    - make
+    - make deps gen
+    - make build
     - ls -la
-#    - cp drone_static /data/
-    - cp --parents /etc/ssl/certs/ca-certificates.crt /data/"
+    - chmod a+x drone
+    - cp drone /data/usr/local/bin/drone
+    - cp --parents /etc/ssl/certs/ca-certificates.crt /data/
 
 
 # publish:
