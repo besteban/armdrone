@@ -31,9 +31,9 @@ build:
     # - make deps gen && make build && make build_static
     - make deps gen
     - make build
-    - ls -la
-    - chmod a+x drone
-    - cp drone /data/usr/local/bin/drone
+    - ls -la . drone/
+    - cp drone/drone /data/usr/local/bin/drone
+    - chmod a+x /data/usr/local/bin/drone
     - cp --parents /etc/ssl/certs/ca-certificates.crt /data/
 
 
