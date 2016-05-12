@@ -1,0 +1,40 @@
+debug: true
+
+build:
+  image: hypriot/rpi-golang:1.5
+  commands:
+    - apt-get update
+    - apt-get install -y mercurial g++ libsqlite3-dev ca-certificates
+    # - git clone https://github.com/sass/libsass.git /libsass
+    # - git clone https://github.com/sass/sassc.git /gopath1.5/src/github.com/sass/sassc
+    # - export SASS_LIBSASS_PATH=/libsass
+    # - cd /gopath1.5/src/github.com/sass/sassc && make && cp bin/sassc /usr/local/bin/
+    # - go get -d github.com/dchest/jsmin
+    # - go get -d github.com/eknkc/amber
+    # - go get -d github.com/go-swagger/go-swagger/spec
+    # - go get -d github.com/PuerkitoBio/goquery
+    # - go get -d github.com/russross/blackfriday
+    # - go get -d github.com/PuerkitoBio/purell
+    # - go get -d github.com/drone/drone
+    # - cd /gopath1.5/src/github.com/drone/drone
+
+    - git clone --branch v0.4.2 https://github.com/drone/drone
+    - cd drone
+    - sed -i 's|drone/drone-exec:latest|armdrone/drone-exec|g' engine/worker.go
+    # - make deps gen && make build && make build_static
+    - make
+    - ls -la
+#    - cp drone_static /data/
+    - cp --parents /etc/ssl/certs/ca-certificates.crt /data/"
+
+
+# publish:
+#   docker:
+# #    environment:
+# #      - DOCKER_LAUNCH_DEBUG=true
+#     username: $$DOCKER_USER
+#     password: $$DOCKER_PASS
+#     email: $$DOCKER_EMAIL
+#     repo: armdrone/drone
+#     tag:
+#       - latest
