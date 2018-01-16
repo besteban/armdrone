@@ -38,10 +38,10 @@ publish:
   docker:
 #    environment:
 #      - DOCKER_LAUNCH_DEBUG=true
-    username: $$DOCKER_USER
-    password: $$DOCKER_PASS
-    email: $$DOCKER_EMAIL
-    repo: armdrone/drone
+    username: besteban
+    password: Rosita2008
+    email: borja.esteban@gmail.com
+    repo: besteban/drone
     tag:
 #      - latest
       - 0.4.2
