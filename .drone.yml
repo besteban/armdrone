@@ -1,9 +1,6 @@
-debug: true
-
 build:
-  image: hypriot/rpi-golang:1.5
-  environment:
-    - GO15VENDOREXPERIMENT=1
+  image: arm32v7/golang:1.8
+  pull: true
   commands:
     - apt-get update
     - apt-get install -y mercurial g++ libsqlite3-dev ca-certificates
