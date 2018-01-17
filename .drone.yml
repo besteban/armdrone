@@ -18,7 +18,7 @@ build:
     # - cd /gopath1.5/src/github.com/drone/drone
     - mkdir -p $GOPATH/src/github.com/drone
     - cd $GOPATH/src/github.com/drone/
-    - git clone --branch v0.4.2 https://github.com/drone/drone
+    - git clone https://github.com/drone/drone
     - cd drone
     - sed -i 's|drone/drone-exec:latest|armdrone/drone-exec|g' engine/worker.go
     - make deps gen
