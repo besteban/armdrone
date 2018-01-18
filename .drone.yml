@@ -20,7 +20,6 @@ build:
     - cd $GOPATH/src/github.com/drone/
     - git clone https://github.com/drone/drone
     - cd drone
-    - sed -i 's|drone/drone-exec:latest|armdrone/drone-exec|g' engine/worker.go
     - make deps gen
     - make build
     - mkdir -p /data/usr/local/bin/
